@@ -383,7 +383,14 @@ export default function RouterTestPage() {
               </div>
               
               <div>
-                <h4 className="text-zinc-300 font-medium mb-3">Available Models</h4>
+                <h4 className="text-zinc-300 font-medium mb-3 flex items-center justify-between">
+                  Available Models
+                  {lastStatusUpdate && (
+                    <span className="text-xs text-zinc-500 font-normal">
+                      Last updated: {lastStatusUpdate.toLocaleTimeString()}
+                    </span>
+                  )}
+                </h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center">
                     <span className="text-zinc-400">Claude 3.7 Sonnet:</span>
