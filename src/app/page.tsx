@@ -103,6 +103,12 @@ export default function RouterTestPage() {
       // Lists - improved to handle various list formats
       .replace(/^(\s*)[*\-]\s+(.*$)/gim, '<li class="ml-4 mb-1">$2</li>')
       .replace(/^(\s*)\d+\.\s+(.*$)/gim, '<li class="ml-4 mb-1">$1. $2</li>')
+      // Handle leading period lists (like ". Item" or '. "Item"')
+      .replace(/^(\s*)\.\s+(.*$)/gim, '<li class="ml-4 mb-1">$2</li>')
+      // Handle quoted period lists (like '. "Item"')
+      .replace(/^(\s*)\.\s+"(.*?)"/gim, '<li class="ml-4 mb-1">$2</li>')
+      // Handle quoted period lists without closing quote (like '. "Item')
+      .replace(/^(\s*)\.\s+"(.*?)$/gim, '<li class="ml-4 mb-1">$2</li>')
       // Code
       .replace(/`(.*?)`/g, '<code class="bg-gray-700 px-1 py-0.5 rounded text-sm font-mono">$1</code>')
       // Better paragraph handling
@@ -220,6 +226,17 @@ export default function RouterTestPage() {
                     dangerouslySetInnerHTML={{ __html: formatMarkdown(response.response) }}
                   />
                 </div>
+                {/* Truncation Warning */}
+                {response.response && response.response.length > 1000 && (
+                  <div className="mt-3 p-3 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
+                    <div className="flex items-center space-x-2 text-yellow-300">
+                      <span className="text-sm">⚠️</span>
+                      <span className="text-sm font-medium">
+                        Response may be truncated due to length ({response.response.length} characters)
+                      </span>
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
