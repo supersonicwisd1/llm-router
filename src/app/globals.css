@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+/* For Firefox */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #52525b #27272a;
+}
+
+/* Force scrollbar to always show */
+.scrollbar-thin::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+/* Ensure content is properly contained */
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+/* Add some padding to ensure content doesn't touch the bottom */
+.scrollable-content {
+  padding-bottom: 1rem;
+}
+
+/* Better markdown formatting for responses */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  color: #f4f4f5;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-content h1 { font-size: 1.5rem; }
+.markdown-content h2 { font-size: 1.25rem; }
+.markdown-content h3 { font-size: 1.125rem; }
+
+.markdown-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content strong {
+  color: #f4f4f5;
+  font-weight: 600;
+}
+
+.markdown-content em {
+  color: #d4d4d8;
+  font-style: italic;
+}
+
+.markdown-content code {
+  background: #3f3f46;
+  color: #f4f4f5;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
