@@ -112,7 +112,7 @@ Add or modify models in `src/lib/models/model-registry.ts`:
 }
 ```
 
-## 🏗️ **Project Structure**
+## **Project Structure**
 
 ```
 src/
