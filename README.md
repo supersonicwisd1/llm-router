@@ -1,18 +1,18 @@
-# 🚀 LLM Router - Intelligent Model Selection & Cost Optimization
+# LLM Router - Intelligent Model Selection & Cost Optimization
 
 An intelligent routing system that automatically selects the most cost-effective LLM for your prompts while maintaining quality and performance.
 
-## ✨ **Features**
+## **Features**
 
-- **🤖 Smart Classification**: Automatically detects prompt types (Q&A, code generation, summarization, creative writing, math reasoning)
-- **💰 Cost Optimization**: Routes requests to the most cost-effective model based on your priorities
-- **⚡ Performance Tuning**: Configurable routing rules for cost, latency, quality, or balanced approaches
-- **🔄 Fail-Safe Routing**: Automatic fallback to reliable models if primary models fail
-- **📊 Real-Time Analytics**: Monitor costs, latency, and model performance in real-time
-- **🎯 Priority Presets**: Choose between cost-first, quality-first, latency-first, or balanced routing
-- **🌐 Web Interface**: Beautiful, responsive UI for testing and monitoring your routing system
+- **Smart Classification**: Automatically detects prompt types (Q&A, code generation, summarization, creative writing, math reasoning)
+- **Cost Optimization**: Routes requests to the most cost-effective model based on your priorities
+- **Performance Tuning**: Configurable routing rules for cost, latency, quality, or balanced approaches
+- **Fail-Safe Routing**: Automatic fallback to reliable models if primary models fail
+- **Real-Time Analytics**: Monitor costs, latency, and model performance in real-time
+- **Priority Presets**: Choose between cost-first, quality-first, latency-first, or balanced routing
+- **Web Interface**: Beautiful, responsive UI for testing and monitoring your routing system
 
-## 🏗️ **Architecture**
+## **Architecture**
 
 ```
 User Prompt → Classification Engine → Routing Rules → Model Selection → Response Generation → Analytics
@@ -21,7 +21,7 @@ User Prompt → Classification Engine → Routing Rules → Model Selection → 
               (Fast & Cheap)     Priorities     Algorithm       Selection      Tracking
 ```
 
-## 🎯 **Supported Models**
+## **Supported Models**
 
 | Provider | Model | Context | Cost (Input/Output) | Best For |
 |----------|-------|---------|---------------------|----------|
@@ -32,7 +32,7 @@ User Prompt → Classification Engine → Routing Rules → Model Selection → 
 | **Google** | Gemini 1.5 Flash | 1M | $0.075/$0.30 per 1M tokens | Long context, cost-effective |
 | **Hugging Face** | GPT-OSS-20B | 128K | **FREE** | Cost-sensitive tasks |
 
-## 🚀 **Quick Start**
+## **Quick Start**
 
 ### **1. Clone & Install**
 ```bash
@@ -63,7 +63,7 @@ npm run dev
 
 Open [http://localhost:3000/router-test](http://localhost:3000/router-test) to test the router!
 
-## 🎮 **Usage**
+## **Usage**
 
 ### **Web Interface**
 1. Navigate to `/router-test`
@@ -74,10 +74,10 @@ Open [http://localhost:3000/router-test](http://localhost:3000/router-test) to t
 
 ### **Priority Presets**
 
-- **💰 Cost-First**: Minimizes cost while maintaining acceptable quality
-- **🎯 Quality-First**: Prioritizes response quality over cost
-- **⚡ Latency-First**: Optimizes for speed and responsiveness
-- **⚖️ Balanced**: Balanced approach considering all factors
+- **Cost-First**: Minimizes cost while maintaining acceptable quality
+- **Quality-First**: Prioritizes response quality over cost
+- **Latency-First**: Optimizes for speed and responsiveness
+- **Balanced**: Balanced approach considering all factors
 
 ### **Example Prompts**
 
@@ -87,7 +87,7 @@ Open [http://localhost:3000/router-test](http://localhost:3000/router-test) to t
 - **Summarization**: "Summarize the key points of machine learning"
 - **Math**: "Solve: 2x + 5 = 13"
 
-## 🔧 **Configuration**
+## **Configuration**
 
 ### **Routing Rules**
 Customize routing behavior in `src/lib/routing/routing-rules.ts`:
@@ -127,7 +127,7 @@ src/
 └── utils/                 # Utilities & logging
 ```
 
-## 🔍 **How It Works**
+## **How It Works**
 
 ### **1. Prompt Classification**
 - **Heuristic Classification**: Fast keyword-based detection
@@ -144,7 +144,7 @@ src/
 - **Error Handling**: Automatic fallback to reliable models
 - **Performance Tracking**: Latency, cost, and quality metrics
 
-## 📊 **Monitoring & Analytics**
+## **Monitoring & Analytics**
 
 ### **Real-Time Metrics**
 - **Cost per request** and total cost savings
@@ -158,7 +158,7 @@ src/
 - **Cost efficiency** comparisons
 - **Quality metrics** tracking
 
-## 🛠️ **Development**
+## **Development**
 
 ### **Available Scripts**
 ```bash
@@ -185,7 +185,7 @@ class CustomRoutingEngine extends RoutingEngine {
 }
 ```
 
-## 🚧 **Troubleshooting**
+## **Troubleshooting**
 
 ### **Common Issues**
 
@@ -209,33 +209,3 @@ Enable detailed logging by setting environment variable:
 ```bash
 DEBUG=true npm run dev
 ```
-
-## 🤝 **Contributing**
-
-1. **Fork** the repository
-2. **Create** a feature branch
-3. **Implement** your changes
-4. **Test** thoroughly
-5. **Submit** a pull request
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 **Acknowledgments**
-
-- **OpenAI** for GPT models and API
-- **Anthropic** for Claude models
-- **Google** for Gemini models
-- **Hugging Face** for free model access
-- **Next.js** team for the amazing framework
-
-## 📞 **Support**
-
-- **Issues**: [GitHub Issues](your-repo-url/issues)
-- **Discussions**: [GitHub Discussions](your-repo-url/discussions)
-- **Documentation**: [Project Wiki](your-repo-url/wiki)
-
----
-
-**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
