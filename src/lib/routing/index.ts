@@ -1,4 +1,4 @@
-export { RoutingEngine, type RoutingDecision, type RoutingMetrics } from './routing-engine';
+export { RoutingEngine, type RoutingMetrics } from './routing-engine';
 export { RouterService, type RouterResponse, type RouterMetrics } from './router-service';
 export { 
   getRoutingRules, 
@@ -8,3 +8,4 @@ export {
   CONTEXT_AWARE_RULES,
   PRIORITY_WEIGHTS
 } from './routing-rules';
+export type { RoutingDecision } from '@/lib/types';

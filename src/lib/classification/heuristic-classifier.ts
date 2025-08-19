@@ -35,6 +35,7 @@ export class HeuristicClassifier {
       [PromptType.SUMMARIZE]: { score: 0, matchedKeywords: [] },
       [PromptType.QA]: { score: 0, matchedKeywords: [] },
       [PromptType.CREATIVE]: { score: 0, matchedKeywords: [] },
+      [PromptType.MATH_REASONING]: { score: 0, matchedKeywords: [] },
       [PromptType.UNKNOWN]: { score: 0, matchedKeywords: [] },
     };
 

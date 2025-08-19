@@ -254,11 +254,11 @@ export const updateModelAvailability = (modelName: string, isAvailable: boolean)
       const key = `model_availability_${modelName}`;
       localStorage.setItem(key, isAvailable.toString());
     } else {
-      // Server-side: use a simple in-memory cache
-      if (!(global as any).modelAvailabilityCache) {
-        (global as any).modelAvailabilityCache = new Map();
-      }
-      (global as any).modelAvailabilityCache.set(modelName, isAvailable);
+          // Server-side: use a simple in-memory cache
+    if (!(global as Record<string, unknown>).modelAvailabilityCache) {
+      (global as Record<string, unknown>).modelAvailabilityCache = new Map();
+    }
+    ((global as Record<string, unknown>).modelAvailabilityCache as Map<string, boolean>).set(modelName, isAvailable);
     }
   } else {
     console.log(`Model Registry: Model ${modelName} not found in registry`);

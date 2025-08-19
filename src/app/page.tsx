@@ -17,7 +17,6 @@ export default function RouterTestPage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [modelStatus, setModelStatus] = useState<Record<string, boolean>>({});
-  const [isStatusLoading, setIsStatusLoading] = useState(false);
   const [lastStatusUpdate, setLastStatusUpdate] = useState<Date | null>(null);
   
   // Fetch model availability status on component mount
@@ -27,7 +26,6 @@ export default function RouterTestPage() {
 
   // Function to fetch model status
   const fetchModelStatus = async () => {
-    setIsStatusLoading(true);
     try {
       const response = await fetch('/api/route');
       if (response.ok) {
@@ -41,8 +39,6 @@ export default function RouterTestPage() {
       }
     } catch (error) {
       console.error('Failed to fetch model status:', error);
-    } finally {
-      setIsStatusLoading(false);
     }
   };
   

@@ -19,11 +19,13 @@ export interface SelectTriggerProps {
 export interface SelectContentProps {
   className?: string;
   children: React.ReactNode;
+  onSelect?: (value: string) => void;
 }
 
 export interface SelectItemProps {
   value: string;
   children: React.ReactNode;
+  onSelect?: (value: string) => void;
 }
 
 export interface SelectValueProps {
@@ -61,7 +63,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               if (React.isValidElement(child) && child.type === SelectContent) {
                 return React.cloneElement(child, {
                   onSelect: handleSelect
-                });
+                } as SelectContentProps);
               }
               return child;
             })}
@@ -92,7 +94,7 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps & { on
           if (React.isValidElement(child) && child.type === SelectItem) {
             return React.cloneElement(child, {
               onSelect
-            });
+            } as SelectItemProps);
           }
           return child;
         })}

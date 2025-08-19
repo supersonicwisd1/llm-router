@@ -17,7 +17,8 @@ export class HuggingFaceClient extends BaseModelClientImpl {
   }
 
   // Implement required abstract methods
-  async *generateResponseStream(prompt: string, _options: GenerationOptions = {}): AsyncGenerator<string> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async *generateResponseStream(prompt: string): AsyncGenerator<string> {
     throw new Error('Streaming not supported for Hugging Face models');
   }
 
@@ -27,8 +28,8 @@ export class HuggingFaceClient extends BaseModelClientImpl {
   }
 
   // Build messages for the API call
-  private buildMessages(prompt: string, options: GenerationOptions): Array<{ role: string; content: string }> {
-    const messages = [];
+  private buildMessages(prompt: string, options: GenerationOptions): Array<{ role: 'system' | 'user'; content: string }> {
+    const messages: Array<{ role: 'system' | 'user'; content: string }> = [];
     
     if (options.systemPrompt) {
       messages.push({ role: 'system', content: options.systemPrompt });
