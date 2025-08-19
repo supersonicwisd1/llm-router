@@ -382,15 +382,15 @@ export default function RouterTestPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Quality First:</span>
-                    <span className="text-white">Quality 65% | Cost 15% | Latency 20%</span>
+                    <span className="text-white">Quality 70% | Cost 20% | Latency 10%</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Cost First:</span>
-                    <span className="text-white">Quality 30% | Cost 50% | Latency 20%</span>
+                    <span className="text-white">Quality 20% | Cost 70% | Latency 10%</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Latency First:</span>
-                    <span className="text-white">Quality 30% | Cost 20% | Latency 50%</span>
+                    <span className="text-white">Quality 20% | Cost 10% | Latency 70%</span>
                   </div>
                 </div>
               </div>
