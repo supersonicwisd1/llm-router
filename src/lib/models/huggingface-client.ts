@@ -4,7 +4,7 @@ import { ModelResponse, Provider } from '@/lib/types';
 import { Logger } from '@/utils/logger';
 
 export class HuggingFaceClient extends BaseModelClientImpl {
-  public readonly provider = Provider.OPENAI;
+  public readonly provider = Provider.HUGGINGFACE;
   public readonly modelName: string;
   
   private client: OpenAI | null = null;
@@ -92,9 +92,18 @@ export class HuggingFaceClient extends BaseModelClientImpl {
       const endTime = Date.now();
       const latency = endTime - startTime;
 
-      const choice = response.choices[0];
-      if (!choice?.message?.content) {
-        throw new Error('No response content received from Hugging Face model');
+      const choice = response.choices?.[0];
+      const message: unknown = choice?.message ?? {};
+      // Some HF router models (e.g., fireworks gpt-oss-20b) return reasoning_content instead of content
+      // Prefer content, fall back to reasoning_content, else empty string
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const msg = message as any;
+      const text: string = (typeof msg?.content === 'string' && msg.content.trim() !== '')
+        ? msg.content
+        : (typeof msg?.reasoning_content === 'string' ? msg.reasoning_content : '');
+
+      if (text === '') {
+        this.logger.warn('Hugging Face: empty assistant text (no content/reasoning_content present)');
       }
 
       const inputTokens = response.usage?.prompt_tokens || 0;
@@ -108,7 +117,7 @@ export class HuggingFaceClient extends BaseModelClientImpl {
       });
 
       return {
-        content: choice.message.content,
+        content: text,
         modelName: this.modelName,
         provider: this.provider,
         usage: {

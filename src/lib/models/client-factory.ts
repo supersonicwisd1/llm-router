@@ -27,19 +27,33 @@ export class ModelClientFactory {
    * Get or create a model client for the specified model
    */
   getClient(modelName: string): BaseModelClient {
+    // Return cached client if exists
     if (this.clients.has(modelName)) {
       return this.clients.get(modelName)!;
     }
 
-    const modelConfig = MODEL_REGISTRY[modelName];
+    // Resolve model config by registry key OR by underlying provider modelName
+    let resolvedKey: string | undefined = modelName;
+    let modelConfig = MODEL_REGISTRY[resolvedKey];
+
     if (!modelConfig) {
+      const matched = Object.entries(MODEL_REGISTRY).find(([, cfg]) => cfg.modelName === modelName);
+      if (matched) {
+        resolvedKey = matched[0];
+        modelConfig = matched[1];
+      }
+    }
+
+    if (!modelConfig || !resolvedKey) {
       throw new Error(`Unknown model: ${modelName}`);
     }
 
     const client = this.createClient(modelConfig);
-    this.clients.set(modelName, client);
+    // Cache by both the registry key and the full provider modelName for future lookups
+    this.clients.set(resolvedKey, client);
+    this.clients.set(modelConfig.modelName, client);
     
-    this.logger.info('Created new model client', { modelName, provider: modelConfig.provider });
+    this.logger.info('Created new model client', { modelName: resolvedKey, provider: modelConfig.provider, providerModel: modelConfig.modelName });
     
     return client;
   }
